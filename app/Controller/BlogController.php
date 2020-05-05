@@ -17,17 +17,19 @@ class BlogController
     }
 
     public function get(int $id = null){
-        $sql = 'SELECT * FROM blog';
         if($id !== null){
             $sql = 'SELECT * FROM blog where id='.$id;
+            $statement = $this->database->query($sql);
+            return $statement->fetch();
         }
-
+        $sql = 'SELECT * FROM blog';
         $statement = $this->database->query($sql);
         return $statement->fetchAll();
     }
 
     public function addPost(string $title, string $text){
         try {
+            //TODO Global validation here would be nice if I had more time
             if (!empty($title) && !empty($text)) {
                 $sql = "INSERT INTO blog (title, text) " . "VALUES (:title, :text);";
                 $statement = $this->database->prepare($sql);
@@ -44,6 +46,29 @@ class BlogController
             }
         }catch (\Exception $e){
             return "Could not save post. Error: ".$e;
+        }
+    }
+
+    public function updatePost(int $id, string $title, string $text){
+        try {
+            //TODO Global validation here would be nice if I had more time
+            if (!empty($id) && !empty($title) && !empty($text)) {
+                $sql = "UPDATE blog SET title = :title, text = :text WHERE id = :id";
+                $statement = $this->database->prepare($sql);
+                $data = array(
+                    'id'            => $id,
+                    'title'         => $title,
+                    'text'          => $text,
+                );
+                $statement->execute($data);
+
+                return 'Updated post';
+
+            }else{
+                return 'Id, title or text were empty';
+            }
+        }catch (\Exception $e){
+            return "Could not update post. Error: ".$e;
         }
     }
 }

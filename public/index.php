@@ -3,7 +3,9 @@
     $blogController = new \App\Controller\BlogController();
     $blogEntries = $blogController->get();
 ?><html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
     <body>
         <h1>Blog</h1>
         <hr>
@@ -12,7 +14,7 @@
                 <a href="add.php">Add post</a>
             </li>
         </ul>
-        <table border="1">
+        <table class="blog-table">
             <tr>
                 <th>id</th>
                 <th>title</th>

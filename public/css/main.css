@@ -1,0 +1,6 @@
+.blog-table {
+    border-collapse: collapse
+}
+.blog-table td, th{
+    border: 1px solid #000
+}
