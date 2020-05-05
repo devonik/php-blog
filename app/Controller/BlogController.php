@@ -58,7 +58,7 @@ class BlogController
                 );
                 $statement->execute($data);
 
-                return 'Saved post';
+                return true;
 
             }else{
                 return 'Title or text were empty';
@@ -89,7 +89,7 @@ class BlogController
                 );
                 $statement->execute($data);
 
-                return 'Updated post';
+                return true;
 
             }else{
                 return 'Id, title or text were empty';
@@ -115,7 +115,7 @@ class BlogController
                 );
                 $statement->execute($data);
 
-                return 'Deleted post';
+                return true;
 
             }else{
                 return 'Id were empty';

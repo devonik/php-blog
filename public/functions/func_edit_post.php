@@ -7,9 +7,15 @@ $title = isset($_POST['title']) ? htmlspecialchars($_POST['title']) : null;
 $text = isset($_POST['text']) ? htmlspecialchars($_POST['text']) : null;
 
 $blogController = new \App\Controller\BlogController();
-echo $blogController->updatePost(new \App\Models\BlogEntry($id, $title, $text));
-echo '<ul>
+
+$response = $blogController->updatePost(new \App\Models\BlogEntry($id, $title, $text));
+if($response){
+    header('Location: ../');
+}else{
+    echo $response;
+    echo '<ul>
         <li>
             <a href="../">List of blog entries</a>
         </li>
     </ul>';
+}

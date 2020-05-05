@@ -5,9 +5,14 @@ $title = isset($_POST['title']) ? htmlspecialchars($_POST['title']) :null;
 $text = isset($_POST['text']) ? htmlspecialchars($_POST['text']) : null;
 
 $blogController = new \App\Controller\BlogController();
-echo $blogController->addPost(new \App\Models\BlogEntry(null, $title, $text));
-echo '<ul>
+$response = $blogController->addPost(new \App\Models\BlogEntry(null, $title, $text));
+if($response){
+    header('Location: ../');
+}else{
+    echo $response;
+    echo '<ul>
         <li>
             <a href="../">List of blog entries</a>
         </li>
     </ul>';
+}
