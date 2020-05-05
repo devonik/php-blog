@@ -7,6 +7,6 @@
 .blog-entry > * {
     margin: 1em;
 }
-.blog-entry-actions{
-
+.blog-entry-actions > a{
+    text-decoration: none;
 }
