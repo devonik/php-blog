@@ -7,9 +7,8 @@ use PDO;
 class Database
 {
     static function getConnection(){
-        //$dotenv = Dotenv::createImmutable(__DIR__);
-        //$dotenv->load();
-        $connection = 'mysql:host=localhost;dbname=php_blog';
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
 
         $options = array(
             PDO::ATTR_PERSISTENT => true,
@@ -19,8 +18,7 @@ class Database
         );
 
         try{
-            //TODO put the variables into .env
-            return new PDO($connection, 'root', 'Start123', $options);
+            return new PDO(getenv('DB_MYSQL_PDO_CONNECTION'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'), $options);
         }catch(\PDOException $ex){
             echo 'Cannot connect to database: '.$ex->getMessage();
             die();
