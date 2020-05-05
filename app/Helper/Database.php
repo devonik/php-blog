@@ -1,12 +1,14 @@
 <?php
+namespace App\Helper;
 
+use Dotenv\Dotenv;
 
 class Database
 {
     static function getConnection(){
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
-        die(getenv('DB_USERNAME'));
+        return getenv('DB_USERNAME');
         /*$optionen = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,

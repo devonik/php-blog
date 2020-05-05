@@ -1,4 +1,7 @@
 <?php
+namespace App\Controller;
+
+use App\Helper\Database;
 
 
 class BlogController
@@ -13,8 +16,9 @@ class BlogController
         $database = Database::getConnection();
     }
 
+
     public function addPost(string $title, string $text){
-        $name = htmlspecialchars(trim(addslashes($_POST['name'])));
-        $passwort = htmlspecialchars(trim(addslashes($_POST['passwort'])));
+        $title = htmlspecialchars(trim(addslashes($_POST['title'])));
+        $text = htmlspecialchars(trim(addslashes($_POST['text'])));
     }
 }
