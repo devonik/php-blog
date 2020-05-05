@@ -8,6 +8,6 @@ $blogController = new \App\Controller\BlogController();
 echo $blogController->deletePost($id);
 echo '<ul>
         <li>
-            <a href="../index.php">List of blog entries</a>
+            <a href="../">List of blog entries</a>
         </li>
     </ul>';

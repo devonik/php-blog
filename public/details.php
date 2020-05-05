@@ -7,14 +7,15 @@ $data = $blogController->get($id);
 ?>
 <html>
     <head>
-        <title></title>
+        <title>Details</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
         <h1>Edit blog entry - #<?php echo $id ?></h1>
         <hr>
         <ul>
             <li>
-                <a href="index.php">List of blog entries</a>
+                <a href="./">List of blog entries</a>
             </li>
         </ul>
         <form action="functions/func_edit_post.php?id=<?php echo $id ?>" method="post">

@@ -3,7 +3,10 @@ include ('../app/Controller/BlogController.php');
 $blogController = new \App\Controller\BlogController();
 ?>
 <html>
-    <head></head>
+    <head>
+        <title>Add post</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
     <body>
         <form action="functions/func_add_post.php" method="post">
             <label for="title">Title</label><br>

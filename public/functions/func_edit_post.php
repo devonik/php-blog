@@ -10,6 +10,6 @@ $blogController = new \App\Controller\BlogController();
 echo $blogController->updatePost(new \App\Models\BlogEntry($id, $title, $text));
 echo '<ul>
         <li>
-            <a href="../index.php">List of blog entries</a>
+            <a href="../">List of blog entries</a>
         </li>
     </ul>';
