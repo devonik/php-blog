@@ -14,7 +14,7 @@ $data = $blogController->get($id);
         <hr>
         <ul>
             <li>
-                <a href="index.php">Liste of blog entries</a>
+                <a href="index.php">List of blog entries</a>
             </li>
         </ul>
         <form action="functions/func_edit_post.php?id=<?php echo $id ?>" method="post">
