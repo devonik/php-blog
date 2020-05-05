@@ -6,29 +6,29 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
-    <body>
+    <body class="blog">
         <h1>Blog</h1>
         <hr>
-        <ul>
-            <li>
-                <a href="add.php">Add post</a>
-            </li>
-        </ul>
-        <table class="blog-table">
-            <tr>
-                <th>id</th>
-                <th>title</th>
-                <th>text</th>
-            </tr>
-            <?php foreach($blogEntries as $entry){ ?>
-                <tr>
-                    <td><?php echo $entry['id'] ?></td>
-                    <td><?php echo $entry['title'] ?></td>
-                    <td><?php echo $entry['text'] ?></td>
-                    <td><a href="details.php?id=<?php echo $entry['id']; ?>">Edit</a></td>
-                    <td><a href="delete.php?id=<?php echo $entry['id']; ?>">Delete</a></td>
-                </tr>
-            <?php } ?>
-        </table>
+
+        <a href="add.php">Add post</a>
+
+        <?php foreach($blogEntries as $entry){ ?>
+            <div class="blog-entry">
+                <div class="blog-entry-header">
+                    #<?php echo $entry['id'] .' - '. $entry['title'] ?>
+                </div>
+                <div class="blog-entry-body">
+                    <?php echo $entry['text'] ?>
+                </div>
+                <div class="blog-entry-actions">
+                    <a href="details.php?id=<?php echo $entry['id']; ?>">
+                        <button>Edit</button>
+                    </a>
+                    <a href="delete.php?id=<?php echo $entry['id']; ?>">
+                        <button>Delete</button>
+                    </a>
+                </div>
+            </div>
+        <?php } ?>
     </body>
 </html>

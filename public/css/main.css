@@ -1,6 +1,12 @@
-.blog-table {
-    border-collapse: collapse
+.blog{
+    text-align: center;
 }
-.blog-table td, th{
-    border: 1px solid #000
+.blog-entry{
+    margin-bottom: 3em;
+}
+.blog-entry > * {
+    margin: 1em;
+}
+.blog-entry-actions{
+
 }
