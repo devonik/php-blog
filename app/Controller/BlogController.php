@@ -16,6 +16,15 @@ class BlogController
         $this->database = Database::getConnection();
     }
 
+    public function get(int $id = null){
+        $sql = 'SELECT * FROM blog';
+        if($id !== null){
+            $sql = 'SELECT * FROM blog where id='.$id;
+        }
+
+        $statement = $this->database->query($sql);
+        return $statement->fetchAll();
+    }
 
     public function addPost(string $title, string $text){
         try {
