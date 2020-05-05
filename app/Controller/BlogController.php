@@ -71,4 +71,25 @@ class BlogController
             return "Could not update post. Error: ".$e;
         }
     }
+
+    public function deletePost(int $id){
+        try {
+            //TODO Global validation here would be nice if I had more time
+            if (!empty($id)) {
+                $sql = "DELETE FROM blog WHERE id = :id";
+                $statement = $this->database->prepare($sql);
+                $data = array(
+                    'id'            => $id
+                );
+                $statement->execute($data);
+
+                return 'Deleted post';
+
+            }else{
+                return 'Id were empty';
+            }
+        }catch (\Exception $e){
+            return "Could not delete post. Error: ".$e;
+        }
+    }
 }

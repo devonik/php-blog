@@ -24,7 +24,7 @@
                     <a href="details.php?id=<?php echo $entry['id']; ?>">
                         <button>Edit</button>
                     </a>
-                    <a href="delete.php?id=<?php echo $entry['id']; ?>">
+                    <a href="functions/func_delete_post.php?id=<?php echo $entry['id']; ?>">
                         <button>Delete</button>
                     </a>
                 </div>
