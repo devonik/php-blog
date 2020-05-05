@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
+require_once dirname(__FILE__) . '/../../vendor/autoload.php';
 
 use App\Helper\Database;
-
 
 class BlogController
 {
@@ -13,12 +13,28 @@ class BlogController
      */
     public function __construct()
     {
-        $database = Database::getConnection();
+        $this->database = Database::getConnection();
     }
 
 
     public function addPost(string $title, string $text){
-        $title = htmlspecialchars(trim(addslashes($_POST['title'])));
-        $text = htmlspecialchars(trim(addslashes($_POST['text'])));
+        try {
+            if (!empty($title) && !empty($text)) {
+                $sql = "INSERT INTO blog (title, text) " . "VALUES (:title, :text);";
+                $statement = $this->database->prepare($sql);
+                $data = array(
+                    'title'         => $title,
+                    'text'          => $text,
+                );
+                $statement->execute($data);
+
+                return 'Saved post';
+
+            }else{
+                return 'Title or text were empty';
+            }
+        }catch (\Exception $e){
+            return "Could not save post. Error: ".$e;
+        }
     }
 }

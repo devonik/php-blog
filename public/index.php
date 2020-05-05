@@ -5,6 +5,14 @@
 ?><html>
     <head></head>
     <body>
-    DIES IST EIN BLOG
+        <form action="functions/func_add_post.php" method="post">
+            <label for="title">Titel</label><br>
+            <input type="text" name="title" id="title"><br>
+
+            <label for="text">Name</label><br>
+            <textarea name="text" id="text"></textarea><br><br>
+
+            <button type="submit">Add Post</button>
+        </form>
     </body>
 </html>
