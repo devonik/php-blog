@@ -3,9 +3,17 @@ namespace App\Controller;
 require_once dirname(__FILE__) . '/../../vendor/autoload.php';
 
 use App\Helper\Database;
+use App\Models\BlogEntry;
 
+/**
+ * Class BlogController
+ * @package App\Controller
+ */
 class BlogController
 {
+    /**
+     * @var Database
+     */
     private $database;
 
     /**
@@ -16,6 +24,10 @@ class BlogController
         $this->database = Database::getConnection();
     }
 
+    /**
+     * @param int|null $id
+     * @return array|mixed
+     */
     public function get(int $id = null){
         if($id !== null){
             $sql = 'SELECT * FROM blog where id='.$id;
@@ -27,8 +39,15 @@ class BlogController
         return $statement->fetchAll();
     }
 
-    public function addPost(string $title, string $text){
+    /**
+     * @param BlogEntry $blogEntry
+     * @return string
+     */
+    public function addPost(BlogEntry $blogEntry){
         try {
+            $title = $blogEntry->getTitle();
+            $text = $blogEntry->getText();
+
             //TODO Global validation here would be nice if I had more time
             if (!empty($title) && !empty($text)) {
                 $sql = "INSERT INTO blog (title, text) " . "VALUES (:title, :text);";
@@ -49,8 +68,16 @@ class BlogController
         }
     }
 
-    public function updatePost(int $id, string $title, string $text){
+    /**
+     * @param BlogEntry $blogEntry
+     * @return string
+     */
+    public function updatePost(BlogEntry $blogEntry){
         try {
+            $id = $blogEntry->getId();
+            $title = $blogEntry->getTitle();
+            $text = $blogEntry->getText();
+
             //TODO Global validation here would be nice if I had more time
             if (!empty($id) && !empty($title) && !empty($text)) {
                 $sql = "UPDATE blog SET title = :title, text = :text WHERE id = :id";
@@ -72,7 +99,12 @@ class BlogController
         }
     }
 
+    /**
+     * @param int $id
+     * @return string
+     */
     public function deletePost(int $id){
+
         try {
             //TODO Global validation here would be nice if I had more time
             if (!empty($id)) {

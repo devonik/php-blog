@@ -1,20 +1,52 @@
 <?php
+namespace App\Models;
 
-
-class Blog
+/**
+ * Class BlogEntry
+ */
+class BlogEntry
 {
+    /**
+     * @var
+     */
+    private $id;
+    /**
+     * @var
+     */
     private $title;
+    /**
+     * @var
+     */
     private $text;
 
     /**
-     * Blog constructor.
+     * BlogEntry constructor.
+     * @param $id
      * @param $title
      * @param $text
      */
-    public function __construct($title, $text)
+    public function __construct($id, $title, $text)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->text = $text;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -48,7 +80,6 @@ class Blog
     {
         $this->text = $text;
     }
-
 
 
 }
